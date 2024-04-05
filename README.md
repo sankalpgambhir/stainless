@@ -2,6 +2,33 @@
 
 Verification framework for a subset of the [Scala](http://scala-lang.org) programming language. See the [tutorial](https://epfl-lara.github.io/asplos2022tutorial/).
 
+## HCVS Archive and Examples
+
+This archive of Stainless depends on an experimental version of Inox with
+prototype support for Horn solvers. The examples from the HCVS 2024 paper can be
+found in the `inductiveExamples/` directory.
+
+You will need `sbt` to run these examples. General installation instructions are
+in the following sections.
+
+After booting up `sbt`, the examples can be run with the following pair of commands:
+
+```console
+> project stainless-dotty
+> run ../../inductiveExamples/fibonacci.scala --solvers=horn-z3 --vc-cache=false
+```
+
+The solvers can be changed to `horn-eld` for Eldarica, or `smt-z3`, `smt-cvc5`,
+and `princess` for the usual supported backends. For the McCarthy 91 function,
+the option `--check-measures=no` is required to disable termination checks.
+
+For solvers except for `princess`, the solver binary is expected to be present.
+Since a custom version of Eldarica is in use here, it is packaged as a JAR file
+in the repository. 
+
+Instructions are present in each example file as well. The corresponding
+auto-generated TIP files are available as examples on the [Inox counterpart link](https://github.com/sankalpgambhir/inox/tree/hcvs24).
+
 ## Quick start
 
 We test mostly on [Ubuntu](https://ubuntu.com/download); on [Windows](https://www.microsoft.com/eb-gb/software-download/windows10), you can get sufficient text-based Ubuntu environment by installing [Windows Subsystem for Linux](https://learn.microsoft.com/en-us/windows/wsl/install) (e.g. `wsl --install`, then `wsl --install -d ubuntu`). Ensure you have a [Java](https://openjdk.org/projects/jdk/17/) version ready (it can be headless); on Ubuntu `sudo apt install openjdk-17-jdk-headless` suffices.
