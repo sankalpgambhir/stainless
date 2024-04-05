@@ -18,6 +18,9 @@ After booting up `sbt`, the examples can be run with the following pair of comma
 > run ../../inductiveExamples/fibonacci.scala --solvers=horn-z3 --vc-cache=false
 ```
 
+(The `../../` is required as the working directory is `./frontends/dotty` for
+the Scala 3 compiler frontend.)
+
 The solvers can be changed to `horn-eld` for Eldarica, or `smt-z3`, `smt-cvc5`,
 and `princess` for the usual supported backends. For the McCarthy 91 function,
 the option `--check-measures=no` is required to disable termination checks.
